@@ -41,9 +41,9 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.24.0")
+	compile("joda-time:joda-time:2.9.9")
+
 }
