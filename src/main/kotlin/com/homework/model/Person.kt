@@ -12,11 +12,11 @@ data class Person(
         val dateOfBirth: LocalDate
 ) {
     companion object {
-        private val dateTimeFormatter = DateTimeFormat.forPattern("M/d/yyyy")
+        val dateTimeFormatter = DateTimeFormat.forPattern("M/d/yyyy")
     }
 
     override fun toString() : String {
-        return String.format("%s     %s    %s    %s    %s",
+        return String.format("%s    %s    %s    %s    %s",
                 lastName, firstName, gender.toString(), favoriteColor, dateTimeFormatter.print(dateOfBirth))
     }
 }

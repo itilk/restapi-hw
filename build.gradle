@@ -45,5 +45,7 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.24.0")
 	compile("joda-time:joda-time:2.9.9")
+	testCompile("junit:junit:4.12")
+	testCompile("com.github.stefanbirkner:system-rules:1.18.0")
 
 }

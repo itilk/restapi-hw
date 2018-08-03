@@ -4,13 +4,13 @@ import com.homework.model.Person
 import com.homework.parse.FileParser
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.runBlocking
-import java.io.File
+import java.io.BufferedReader
 
-class PersonRepo constructor(fileDelims: List<Pair<String, String>>) {
+class PersonRepo constructor(fileDelims: List<Pair<BufferedReader, String>>) {
     // use co-routines to load all the files concurrently
     private val people : List<Person> = runBlocking {
             fileDelims.map {
-                async { FileParser.parseFile(File(it.first), it.second) }
+                async { FileParser.parseFile(it.first, it.second) }
             }.map { it.await() }.flatMap { it }.toMutableList()
         }
 

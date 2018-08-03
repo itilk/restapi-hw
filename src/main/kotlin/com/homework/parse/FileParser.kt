@@ -23,8 +23,7 @@ object FileParser {
      * @param delimiter The delimiter used to split the line into parts
      * @return List<Person> a list of person objects, one person for each line in the file
      */
-    fun parseFile(file: File, delimiter: String) : List<Person> {
-        val bufferedReader = BufferedReader(FileReader(file))
+    fun parseFile(bufferedReader: BufferedReader, delimiter: String) : List<Person> {
         return bufferedReader.useLines {
             it.map {
                 parseLine(it, delimiter)
@@ -36,7 +35,7 @@ object FileParser {
      * @param line - line in the format LastName|FirstName|Gender|FavoriteColor|DateOfBirth assuming "|" is delimiter
      * @param delimiter - the delimiter to use to split the line into a List<String>
      */
-    private fun parseLine(line: String, delimiter: String) : Person {
+    fun parseLine(line: String, delimiter: String) : Person {
         val demo = line.split(delimiter)
         return Person(
                 demo[0].trim(),
