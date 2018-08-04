@@ -6,6 +6,9 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
 
+/**
+ *
+ */
 class App {
     companion object {
         const val USAGE = "java -jar homework.jar (cl | server) /path/to/space-file /path/to/comma-file /path/to/pipe-file"
@@ -46,7 +49,11 @@ class App {
 
         if(args[0] == "cl") {
             CommandlinePrinter(PersonRepo(fileDelims)).displayOutput()
+        } else {
+           val server = Server(PersonRepo(fileDelims))
+            server.run()
         }
+
     }
 
     fun usage() {
