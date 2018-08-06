@@ -2,6 +2,7 @@ package com.homework.model
 
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
 
 
 data class Person(
@@ -12,7 +13,7 @@ data class Person(
         val dateOfBirth: LocalDate
 ) {
     companion object {
-        val dateTimeFormatter = DateTimeFormat.forPattern("M/d/yyyy")
+        val dateTimeFormatter : DateTimeFormatter  = DateTimeFormat.forPattern("M/d/yyyy")
     }
 
     override fun toString() : String {

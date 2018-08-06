@@ -6,13 +6,22 @@ import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.runBlocking
 import java.io.BufferedReader
 
-class PersonRepo constructor(fileDelims: List<Pair<BufferedReader, String>>) {
+object PersonRepo {
     // use co-routines to load all the files concurrently
-    private val people : List<Person> = runBlocking {
-            fileDelims.map {
-                async { FileParser.parseFile(it.first, it.second) }
-            }.map { it.await() }.flatMap { it }.toMutableList()
+    private var people : MutableList<Person> = mutableListOf()
+
+    /**
+     * This initializes this Singleton.  It should only be called once at startup
+     */
+    fun init(fileDelims: List<Pair<BufferedReader, String>>) {
+        if(people.isEmpty()) {
+            people = runBlocking {
+                fileDelims.map {
+                    async { FileParser.parseFile(it.first, it.second) }
+                }.map { it.await() }.flatMap { it }.toMutableList()
+            }
         }
+    }
 
     fun peopleByGender() : List<Person> {
         return people.sortedWith(GenderComparator())
@@ -26,4 +35,11 @@ class PersonRepo constructor(fileDelims: List<Pair<BufferedReader, String>>) {
         return people.sortedByDescending { it.lastName }
     }
 
+    fun addPerson(person: Person) {
+        people.add(person)
+    }
+
+    fun reset() {
+        people = mutableListOf()
+    }
 }

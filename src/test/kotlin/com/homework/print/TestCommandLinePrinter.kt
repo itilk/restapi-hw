@@ -41,8 +41,8 @@ class TestCommandLinePrinter {
         val commaReader = BufferedReader(StringReader("Trump, Donald,  M,  Red,  2/2/1948"))
         val pipeReader = BufferedReader(StringReader("Merkel | Angela | F | Black | 3/3/1954"))
 
-        val personRepo = PersonRepo(listOf(Pair(spaceReader, " "), Pair(commaReader, ","), Pair(pipeReader, "|")))
-        CommandlinePrinter(personRepo).displayOutput()
+        PersonRepo.init(listOf(Pair(spaceReader, " "), Pair(commaReader, ","), Pair(pipeReader, "|")))
+        CommandlinePrinter().displayOutput()
 
         val expectedResult =
                 "People By Gender:\n" +

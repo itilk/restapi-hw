@@ -47,13 +47,13 @@ class App {
             invalidFile(pipeFile.absolutePath)
         }
 
-        if(args[0] == "cl") {
-            CommandlinePrinter(PersonRepo(fileDelims)).displayOutput()
-        } else {
-           val server = Server(PersonRepo(fileDelims))
-            server.run()
-        }
+        PersonRepo.init(fileDelims)
 
+        if(args[0] == "cl") {
+            CommandlinePrinter().displayOutput()
+        } else {
+            Server().run()
+        }
     }
 
     fun usage() {

@@ -44,8 +44,12 @@ dependencies {
 	compile("org.jetbrains.kotlinx:kotlinx-coroutines-core:0.24.0")
 	compile("joda-time:joda-time:2.9.9")
 	compile("io.ktor:ktor-server-netty:$ktor_version")
-	compile("com.beust:klaxon:3.0.4")
+	compile "io.ktor:ktor-jackson:$ktor_version"
+	compile ("org.slf4j:slf4j-api:1.7.25")
+	compile ("ch.qos.logback:logback-classic:1.2.3")
+	compile ("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.6")
 	testCompile("junit:junit:4.12")
 	testCompile("com.github.stefanbirkner:system-rules:1.18.0")
+	testCompile("io.ktor:ktor-server-test-host:$ktor_version")
 
 }
